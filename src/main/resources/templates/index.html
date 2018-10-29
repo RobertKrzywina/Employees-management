@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+</head>
+<body>
+    <div class="container">
+        <form action="#" method="post" th:action="@{/create}" th:object="${newEmployee}">
+            <label>first name: <input type="text" th:field="*{firstName}"></label><br>
+            <label>last name: <input type="text" th:field="*{lastName}"></label><br>
+            <label>age: <input type="number" th:field="*{age}"></label><br>
+            <label>earning: <input type="number" step="any" th:field="*{earnings}"></label><br>
+            <label>student:
+                <select th:field="*{student}">
+                    <option th:value="'Yes'" th:text="Yes"></option>
+                    <option th:value="'No'" th:text="No"></option>
+                </select>
+            </label>
+            <div th:object="${employeeAddress}">
+                <label>city: <input type="text" th:field="*{city}"></label><br>
+                <label>ZIP code: <input type="text" th:field="*{zipCode}"></label><br>
+                <label>street: <input type="text" th:field="*{street}"></label><br>
+                <label>house number: <input type="number" th:field="*{houseNumber}"></label><br>
+            </div>
+            <input type="submit" value="Add"/>
+        </form>
+    </div>
+</body>
+</html>
