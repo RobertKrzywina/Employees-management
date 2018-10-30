@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{../static/css/style.css}"/>
+</head>
+<body>
+    <div th:if="not${employees.isEmpty()}">
+        <table border="1" style="text-align: center; margin: auto">
+            <tr>
+                <th>id</th>
+                <th>first name</th>
+                <th>last name</th>
+                <th>age</th>
+                <th>earnings</th>
+                <th>student</th>
+                <th>address_id</th>
+                <th>city</th>
+                <th>ZIP code</th>
+                <th>street</th>
+                <th>house number</th>
+            </tr>
+            <tr th:each="employee:${employees}" th:object="${employee}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{firstName}"></td>
+                <td th:text="*{lastName}"></td>
+                <td th:text="*{age}"></td>
+                <td th:text="*{earnings}"></td>
+                <td th:text="*{student}"></td>
+                <td th:text="*{getAddress().getId()}"></td>
+                <td th:text="*{getAddress().getCity()}"></td>
+                <td th:text="*{getAddress().getZipCode()}"></td>
+                <td th:text="*{getAddress().getStreet()}"></td>
+                <td th:text="*{getAddress().getHouseNumber()}"></td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${employees.isEmpty()}">
+        <h1>There is not data yet</h1>
+    </div>
+    <a th:href="@{/}">Back to the home page</a>
+</body>
+</html>
