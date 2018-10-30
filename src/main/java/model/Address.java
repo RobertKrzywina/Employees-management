@@ -9,7 +9,7 @@ public class Address implements Serializable {
     private static final long serialVersionUID = 101L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="address_id")
     private long id;
 
@@ -24,6 +24,9 @@ public class Address implements Serializable {
 
     @Column(name = "house_number")
     private int houseNumber;
+
+    @OneToOne(mappedBy = "address")
+    private Employee employee;
 
     public Address() {}
 

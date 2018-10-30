@@ -8,36 +8,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import repository.AddressRepository;
-import repository.EmployeeRepository;
+import repository.Repository;
 
 import java.util.List;
 
 @Controller
 public class EmployeeController {
 
-    private EmployeeRepository employeeRepo;
-    private AddressRepository addressRepo;
+    private Repository repository;
 
     @Autowired
-    public EmployeeController(EmployeeRepository employeeRepo,
-                              AddressRepository addressRepo) {
-        this.employeeRepo = employeeRepo;
-        this.addressRepo = addressRepo;
+    public EmployeeController(Repository repository) {
+        this.repository = repository;
     }
 
     @PostMapping("/create")
     public String create(@ModelAttribute Employee employee,
                          @ModelAttribute Address address) {
-        employee.setAddress(address);
-        employeeRepo.save(employee);
+        repository.save(employee, address);
         return "success";
     }
 
     @GetMapping("/show")
     public String show(Model model) {
-        List<Employee> employees = employeeRepo.findAll();
-        List<Address> addresses = addressRepo.findAll();
+        List<Employee> employees = repository.getEmployees();
+        List<Address> addresses = repository.getAddresses();
         model.addAttribute("employees", employees);
         model.addAttribute("addresses", addresses);
         return "show";

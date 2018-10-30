@@ -9,8 +9,8 @@ public class Employee implements Serializable {
     private static final long serialVersionUID = 100L;
 
     @Id
-    @GeneratedValue
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "employee_id")
     private long id;
 
     @Column(name = "firstName")
@@ -28,11 +28,19 @@ public class Employee implements Serializable {
     @Column(name = "student")
     private boolean isStudent;
 
-    @JoinColumn(name = "address_id")
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "id_address")
     private Address address;
 
     public Employee() {}
+
+    public Employee(String firstName, String lastName, int age, double earnings, boolean isStudent) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.earnings = earnings;
+        this.isStudent = isStudent;
+    }
 
     public Employee(String firstName, String lastName, int age, double earnings, boolean isStudent, Address address) {
         this.firstName = firstName;
