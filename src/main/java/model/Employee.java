@@ -13,23 +13,31 @@ public class Employee implements Serializable {
     @Column(name = "employee_id")
     private long id;
 
-    @Column(name = "firstName")
+    @Column(name = "firstName",
+            nullable = false,
+            length = 15)
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "lastName",
+            nullable = false,
+            length = 15)
     private String lastName;
 
-    @Column(name = "age")
+    @Column(name = "age",
+            nullable = false)
     private int age;
 
-    @Column(name = "earnings")
+    @Column(name = "earnings",
+            nullable = false)
     private double earnings;
 
-    @Column(name = "student")
+    @Column(name = "student",
+            nullable = false)
     private boolean isStudent;
 
     @OneToOne
-    @JoinColumn(name = "id_address")
+    @JoinColumn(name = "id_address",
+                nullable = false)
     private Address address;
 
     public Employee() {}

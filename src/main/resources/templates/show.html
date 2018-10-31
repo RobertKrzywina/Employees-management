@@ -36,10 +36,16 @@
                 <td th:text="*{getAddress().getHouseNumber()}"></td>
             </tr>
         </table>
-        <a th:href="@{/}">Back to the home page</a>
+        <br>
+        <a th:href="@{/}">Back to the home page</a><br>
+        <a th:href="@{/sortById}">Sort by Id</a><br>
+        <a th:href="@{/sortByAgeASC}">Sort by age ASC</a><br>
+        <a th:href="@{/sortByAgeDESC}">Sort by age DESC</a><br>
+        <a th:href="@{/sortByEarningsASC}">Sort by earnings ASC</a><br>
+        <a th:href="@{/sortByEarningsDESC}">Sort by earnings DESC</a><br>
     </div>
     <div class="container" th:if="${employees.isEmpty()}">
-        <h1>There is not data yet</h1>
+        <h1>There is not data yet</h1><br>
         <a th:href="@{/}">Back to the home page</a>
     </div>
 </body>

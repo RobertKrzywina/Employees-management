@@ -9,10 +9,10 @@
 <body>
     <div class="container">
         <form action="#" method="post" th:action="@{/create}" th:object="${newEmployee}">
-            <label>first name: <input type="text" th:field="*{firstName}"></label><br>
-            <label>last name: <input type="text" th:field="*{lastName}"></label><br>
-            <label>age: <input type="number" th:field="*{age}"></label><br>
-            <label>earning: <input type="number" step="any" th:field="*{earnings}"></label><br>
+            <label>first name: <input type="text" th:field="*{firstName}"></label>
+            <label>last name: <input type="text" th:field="*{lastName}"></label>
+            <label>age: <input type="number" th:field="*{age}"></label>
+            <label>earning: <input type="number" step="any" th:field="*{earnings}"></label>
             <label>student:
                 <select th:field="*{student}">
                     <option th:value="'Yes'" th:text="Yes"></option>
@@ -20,15 +20,18 @@
                 </select>
             </label>
             <div th:object="${employeeAddress}">
-                <label>city: <input type="text" th:field="*{city}"></label><br>
-                <label>ZIP code: <input type="text" th:field="*{zipCode}"></label><br>
-                <label>street: <input type="text" th:field="*{street}"></label><br>
-                <label>house number: <input type="number" th:field="*{houseNumber}"></label><br>
+                <label>city: <input type="text" th:field="*{city}"></label>
+                <label>ZIP code: <input type="text" th:field="*{zipCode}"></label>
+                <label>street: <input type="text" th:field="*{street}"></label>
+                <label>house number: <input type="number" th:field="*{houseNumber}"></label>
             </div>
             <input type="submit" value="Add"/>
         </form>
-        <br>
         <a th:href="@{/show}">Show all employees</a>
+        <form action="#" method="post" th:action="@{/delete}">
+            <label>Employee id: <input type="number" th:name="id"></label>
+            <input type="submit" value="Delete">
+        </form>
     </div>
 </body>
 </html>

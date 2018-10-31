@@ -13,16 +13,23 @@ public class Address implements Serializable {
     @Column(name ="address_id")
     private long id;
 
-    @Column(name = "city")
+    @Column(name = "city",
+            nullable = false,
+            length = 15)
     private String city;
 
-    @Column(name = "ZIP_code")
+    @Column(name = "ZIP_code",
+            nullable = false,
+            length = 6)
     private String zipCode;
 
-    @Column(name = "street")
+    @Column(name = "street",
+            nullable = false,
+            length = 15)
     private String street;
 
-    @Column(name = "house_number")
+    @Column(name = "house_number",
+            nullable = false)
     private int houseNumber;
 
     @OneToOne(mappedBy = "address")

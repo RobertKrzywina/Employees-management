@@ -34,4 +34,28 @@ public class Repository {
     public List<Address> getAddresses() {
         return addressRepo.findAll();
     }
+
+    public void delete(long id) {
+        employeeRepo.delete(employeeRepo.findEmployeeById(id));
+    }
+
+    public List<Employee> sortById() {
+        return employeeRepo.findAllByOrderById();
+    }
+
+    public List<Employee> sortByAgeASC() {
+        return employeeRepo.findAllByOrderByAgeAsc();
+    }
+
+    public List<Employee> sortByAgeDESC() {
+        return employeeRepo.findAllByOrderByAgeDesc();
+    }
+
+    public List<Employee> sortByEarningsASC() {
+        return employeeRepo.findAllByOrderByEarningsAsc();
+    }
+
+    public List<Employee> sortByEarningsDESC() {
+        return employeeRepo.findAllByOrderByEarningsDesc();
+    }
 }
