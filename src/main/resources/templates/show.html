@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" th:href="@{../static/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-    <div th:if="not${employees.isEmpty()}">
-        <table border="1" style="text-align: center; margin: auto">
-            <tr>
+    <div class="container" th:if="not${employees.isEmpty()}">
+        <table border="1">
+            <tr id="tableHeader">
                 <th>id</th>
                 <th>first name</th>
                 <th>last name</th>
@@ -22,7 +22,7 @@
                 <th>street</th>
                 <th>house number</th>
             </tr>
-            <tr th:each="employee:${employees}" th:object="${employee}">
+            <tr id="tableContent" th:each="employee:${employees}" th:object="${employee}">
                 <td th:text="*{id}"></td>
                 <td th:text="*{firstName}"></td>
                 <td th:text="*{lastName}"></td>
@@ -36,10 +36,11 @@
                 <td th:text="*{getAddress().getHouseNumber()}"></td>
             </tr>
         </table>
+        <a th:href="@{/}">Back to the home page</a>
     </div>
-    <div th:if="${employees.isEmpty()}">
+    <div class="container" th:if="${employees.isEmpty()}">
         <h1>There is not data yet</h1>
+        <a th:href="@{/}">Back to the home page</a>
     </div>
-    <a th:href="@{/}">Back to the home page</a>
 </body>
 </html>
